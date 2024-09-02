@@ -1,7 +1,7 @@
 #!/bin/bash
 
-ORIGIN_BIN=./date.origin
-REDUCED_BIN=./src/date
+ORIGIN_BIN=/home/ubuntu/repos/file_level_bloat/experiment/workloads/repos/debloater-eval/benchmarks/benchmarks/low/date-8.21/binaries/64/date
+REDUCED_BIN=/home/ubuntu/repos/file_level_bloat/experiment/workloads/repos/debloater-eval/benchmarks/benchmarks/low/date-8.21/binaries/64/date
 LOG=log.txt
 
 

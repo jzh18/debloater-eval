@@ -76,6 +76,24 @@ function cleanup_aggressive_server {
 	SERVER_ALL_PID=0
 }
 
+function start_aggressive_server_container {
+	if [ "${CUT_ARGS}" = true ]; then
+		debug "Starting server (aggressive) (cut args)"
+		pushd "$(dirname "${SERVER_STATIC_ALL_CONF}")" || exit
+		eval "${DOCKER_PREFIX}" "$1"  "${BIN}" &
+		SERVER_ALL_PID=$!
+		popd || exit
+	else
+		debug "Starting server (aggressive)"
+		eval "${DOCKER_PREFIX}" "$1"   "${BIN}" -D -f "${SERVER_STATIC_ALL_CONF}" &
+		SERVER_ALL_PID=$!
+	fi
+}
+
+function cleanup_aggressive_server_container {
+	eval docker stop "${CONTAINER_NAME}"
+}
+
 # ----- Benchmarking functions
 
 # This function returns commands for the client

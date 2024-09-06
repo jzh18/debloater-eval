@@ -39,7 +39,7 @@ function scenario {
 # Cleanup if this script dies for some reason
 trap "aggressive_cleanup" SIGINT SIGTERM EXIT
 
-aggressive_start_server_container file_level_bloat
+aggressive_start_server_container $2
 sleep 0.3
 
 for round in $(seq "${TIMES}"); do

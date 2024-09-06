@@ -25,6 +25,19 @@ function cleanup {
 	SERVER_PID=0
 }
 
+DOCKER_PREFIX="docker run --rm -u 1000:1000 -i --name ${CONTAINER_NAME}  --privileged  --ulimit core=-1  --cap-add=SYS_PTRACE --security-opt seccomp=unconfined -v /home/ubuntu/repos/file_level_bloat/:/home/ubuntu/repos/file_level_bloat --network host -v /tmp:/tmp -e RUST_BACKTRACE=1 -e RUST_LOG=warn -e PATH=/home/ubuntu/miniconda3/bin:/home/ubuntu/miniconda3/condabin:/root/.cargo/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin -e LD_LIBRARY_PATH=/home/ubuntu/repos/file_level_bloat/experiment/workloads/repos/debloater-eval/benchmarks/benchmarks/high/imagemagick-7.0.1-0/binaries/64:/home/ubuntu/repos/file_level_bloat/experiment/workloads/repos/debloater-eval/benchmarks/benchmarks/high/poppler-0.60/binaries/64/ -e MAGICK_CONFIGURE_PATH=/home/ubuntu/repos/file_level_bloat/experiment/workloads/repos/debloater-eval/benchmarks/benchmarks/high/imagemagick-7.0.1-0/binaries/64 "
+
+function start_server_container {
+	echo "${DOCKER_PREFIX} " $1  "${BIN}" 
+	eval "${DOCKER_PREFIX} " $1  "${BIN}" &
+	SERVER_PID=$!
+}
+
+function cleanup_container {
+	eval docker stop "${CONTAINER_NAME}"
+}
+
+
 function client_exec {
 	python3 <<EOF
 from memcache import Client

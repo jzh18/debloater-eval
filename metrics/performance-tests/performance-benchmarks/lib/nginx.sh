@@ -73,6 +73,27 @@ function aggressive_cleanup {
 	FILE_SERVER_PID=0
 }
 
+
+function aggressive_start_server_container {
+	if [ "${CUT_ARGS}" = true ]; then
+		debug "Serving (aggressive) (cut args)"
+		pushd "$(dirname "${FILE_SERVER_CONF}")" || exit
+		eval "${DOCKER_PREFIX}" "$1"  "${BIN}" "${WORKDIR}" &
+		FILE_SERVER_PID=$!
+		popd || exit
+	else
+		debug "Serving (aggressive)"
+		eval "${DOCKER_PREFIX} " $1 "${BIN}" -p "${WORKDIR}" -c "${FILE_SERVER_CONF}" &
+		FILE_SERVER_PID=$!
+	fi
+}
+
+function aggressive_cleanup_container {
+	eval docker stop "${CONTAINER_NAME}"
+}
+
+
+
 # ----- Benchmarking functions
 
 function file_server_download {

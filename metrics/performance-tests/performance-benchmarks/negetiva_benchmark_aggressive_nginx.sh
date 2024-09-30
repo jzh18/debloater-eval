@@ -40,7 +40,7 @@ function scenario {
 trap "aggressive_cleanup" SIGINT SIGTERM EXIT
 
 aggressive_start_server_container $2
-sleep 0.3
+sleep 1 # Wait for the server to start
 
 for round in $(seq "${TIMES}"); do
 	debug "Round ${round}/${TIMES}"

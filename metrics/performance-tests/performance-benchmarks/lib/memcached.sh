@@ -110,7 +110,7 @@ assert client.get('j') is None, 'value was not deleted'"
 }
 
 function c_delete_error {
-	echo "assert client.delete('k')"
+	echo "assert client.delete('k') == 0"
 }
 
 function c_incr {

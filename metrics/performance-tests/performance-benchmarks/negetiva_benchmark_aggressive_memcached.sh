@@ -51,7 +51,7 @@ $(c_flush)
 trap "cleanup" SIGINT SIGTERM EXIT
 
 start_server_container $2
-sleep 0.3
+sleep 1
 
 for round in $(seq "${TIMES}"); do
 	debug "Round ${round}/${TIMES}"

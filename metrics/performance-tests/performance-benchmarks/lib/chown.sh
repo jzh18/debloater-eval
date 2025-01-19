@@ -25,7 +25,7 @@ function reset_owners {
 }
 
 function cleanup {
-	id foo >/dev/null 2>&1 && userdel --remove foo
+	userdel --remove foo
 	reset_owners
 }
 

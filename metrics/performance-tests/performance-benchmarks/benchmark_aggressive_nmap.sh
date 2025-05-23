@@ -8,7 +8,7 @@ DEFAULT_BIN="${BIN}"
 
 # ----- Input variables for benchmarking
 BIN="${1:-${BIN}}"
-: "${TIMES:=1000}"
+: "${TIMES:=100}"
 
 function usage {
 	echo "usage: ${0} [<nmap_binary_path>]"

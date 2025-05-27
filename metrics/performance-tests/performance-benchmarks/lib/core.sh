@@ -13,6 +13,10 @@ function file_exists {
 	test -f "${1}"
 }
 
+function flush {
+	sync && echo 3 > /proc/sys/vm/drop_caches
+}
+
 function die {
 	echo >&2 "Fatal:" "${@}"
 	exit 1

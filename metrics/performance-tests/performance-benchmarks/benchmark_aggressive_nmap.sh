@@ -27,6 +27,7 @@ if [[ "${1:-}" == "-h" ]]; then
 fi
 
 function scenario {
+	flush
 	aggressive_scan
 }
 

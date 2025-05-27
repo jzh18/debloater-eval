@@ -8,7 +8,7 @@ DEFAULT_BIN="${BIN}"
 
 # ----- Input variables for benchmarking
 BIN=${1:-${BIN}}
-: "${TIMES:=100}"
+: "${TIMES:=10}"
 
 function usage {
 	echo "usage: ${0} [<convert_binary_path>]"
@@ -28,6 +28,7 @@ if [[ "${1:-}" == "-h" ]]; then
 fi
 
 function scenario {
+	flush
 	aggressive_flip
 }
 

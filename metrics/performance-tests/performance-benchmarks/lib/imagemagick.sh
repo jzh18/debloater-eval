@@ -37,7 +37,6 @@ function aggressive_flip {
 
 function convert-format {
 	debug "Converting"
-
 	"${BIN}" "${BMP_IMG}" "${BMP_IMG}.gif"
 	"${BIN}" "${BMP_IMG}" "${BMP_IMG}.jpg"
 	"${BIN}" "${BMP_IMG}" "${BMP_IMG}.png"

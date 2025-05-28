@@ -8,7 +8,7 @@ DEFAULT_BIN="${BIN}"
 
 # ----- Input variables for benchmarking
 BIN="${1:-${BIN}}"
-: "${TIMES:=5}"
+: "${TIMES:=1}"
 
 function usage {
 	echo "usage: ${0} [<nmap_binary_path>]"
@@ -26,17 +26,11 @@ if [[ "${1:-}" == "-h" ]]; then
 fi
 
 function scenario {
-	flush
 	tcp_scan
-	flush
 	tcp_scan_range
-	flush
 	service_scan
-	flush
 	service_scan_grep_output
-	flush
 	service_scan_normal_output
-	flush
 	service_scan_xml_output
 }
 

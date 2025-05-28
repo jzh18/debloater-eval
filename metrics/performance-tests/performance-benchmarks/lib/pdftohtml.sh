@@ -24,23 +24,27 @@ function _assert_exists {
 function simple {
 	_assert_exists "${SIMPLE_INPUT}"
 	debug "Simple PDF"
+	flush
 	"${BIN}" "${SIMPLE_INPUT}"
 }
 
 function opts_range {
 	_assert_exists "${SIMPLE_INPUT}"
 	debug "Page Range"
+	flush
 	"${BIN}" -f 1 -l 1 "${SIMPLE_INPUT}"
 }
 
 function single_doc {
 	_assert_exists "${SIMPLE_INPUT}"
 	debug "Single Doc"
+	flush
 	"${BIN}" -s "${SIMPLE_INPUT}"
 }
 
 function complex {
 	_assert_exists "${COMPLEX_INPUT}"
 	debug "Complex Doc"
+	flush
 	"${BIN}" "${COMPLEX_INPUT}"
 }

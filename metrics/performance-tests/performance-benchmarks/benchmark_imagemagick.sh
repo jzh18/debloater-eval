@@ -30,17 +30,29 @@ if [[ "${1:-}" == "-h" ]]; then
 fi
 
 function scenario {
+	flush
 	convert-format
+	flush
 	resize
+	flush
 	flip
+	flush
 	flop
+	flush
 	negate
+	flush
 	scale
+	flush
 	roll
+	flush
 	transverse
+	flush
 	transpose
+	flush
 	rotate
+	flush
 	crop
+	flush
 }
 
 for round in $(seq "${TIMES}"); do

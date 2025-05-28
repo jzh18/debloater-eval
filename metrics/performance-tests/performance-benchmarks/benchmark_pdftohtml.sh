@@ -8,7 +8,7 @@ DEFAULT_BIN="${BIN}"
 
 # ----- Input variables for benchmarking
 BIN="${1:-${BIN}}"
-: "${TIMES:=50}"
+: "${TIMES:=10}"
 
 function usage {
 	echo "usage: ${0} [<pdftohtml_binary_path>]"
@@ -28,9 +28,13 @@ if [[ "${1:-}" == "-h" ]]; then
 fi
 
 function scenario {
+	flush
 	simple
+	flush
 	opts_range
+	flush
 	single_doc
+	flush
 	complex
 }
 

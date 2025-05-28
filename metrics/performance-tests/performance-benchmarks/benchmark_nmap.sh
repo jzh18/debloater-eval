@@ -26,11 +26,17 @@ if [[ "${1:-}" == "-h" ]]; then
 fi
 
 function scenario {
+	flush
 	tcp_scan
+	flush
 	tcp_scan_range
+	flush
 	service_scan
+	flush
 	service_scan_grep_output
+	flush
 	service_scan_normal_output
+	flush
 	service_scan_xml_output
 }
 
